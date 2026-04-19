@@ -35,6 +35,11 @@
       "source": "vercel-labs/agent-skills",
       "sourceType": "github",
       "computedHash": "f3bc47f890f42a44db1007ab390709ec368e4b8c089baee6b0007182236ac474"
+    },
+    "zustand": {
+      "source": "lobehub/lobehub",
+      "sourceType": "github",
+      "computedHash": "57e393ad366e48d80a23950ef1393d4ec131abf81fca7def35adac602f820931"
     }
   }
 }

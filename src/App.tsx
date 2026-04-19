@@ -1,39 +1,49 @@
-import { ProductList } from './features/products';
+import { Routes, Route } from 'react-router-dom';
+import { Header } from '@/components/layout/header';
+import { HousesPage } from '@/pages/houses-page';
+import { FavoritesPage } from '@/pages/favorites-page';
+import { HouseDetailPage } from '@/pages/house-detail-page';
 
 function App() {
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
-      <header className="sticky top-0 z-10 border-b border-zinc-200 bg-white/80 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900/80">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <h1 className="text-2xl font-black tracking-tighter text-zinc-900 dark:text-white">
-            STORE<span className="text-purple-600">FRONT</span>
-          </h1>
-          <nav className="flex items-center gap-6">
-            <a href="#" className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">Products</a>
-            <a href="#" className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">About</a>
-            <button className="rounded-full bg-purple-600 px-5 py-2.5 text-sm font-bold text-white transition-transform hover:scale-105 active:scale-95">
-              Cart (0)
-            </button>
-          </nav>
-        </div>
-      </header>
-
-      <main className="mx-auto max-w-7xl">
-        <div className="px-6 py-12 text-center md:py-20">
-          <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-zinc-900 sm:text-6xl dark:text-white">
-            Featured Collections
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-zinc-500 dark:text-zinc-400">
-            Explore our curated selection of products designed for style and functionality.
-          </p>
-        </div>
-        
-        <ProductList />
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 font-sans antialiased text-zinc-900 dark:text-zinc-50">
+      <Header />
+      
+      <main className="min-h-[calc(100vh-5rem)]">
+        <Routes>
+          <Route path="/" element={<HousesPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/houses/:id" element={<HouseDetailPage />} />
+          <Route path="*" element={
+            <div className="flex h-[60vh] flex-col items-center justify-center gap-4 text-center">
+              <h1 className="text-4xl font-black">404</h1>
+              <p className="text-muted-foreground">The page you're looking for doesn't exist.</p>
+            </div>
+          } />
+        </Routes>
       </main>
 
-      <footer className="mt-20 border-t border-zinc-200 py-12 dark:border-zinc-800">
-        <div className="mx-auto max-w-7xl px-6 text-center text-sm text-zinc-500">
-          <p>© 2026 Storefront Inc. Architecture Demo.</p>
+      <footer className="border-t bg-white py-12 dark:bg-zinc-950">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+            <div>
+              <span className="text-xl font-black tracking-tighter">
+                HOME<span className="text-primary italic">VISION</span>
+              </span>
+              <p className="mt-2 text-sm text-muted-foreground max-w-xs">
+                Empowering homeowners and buyers with the most advanced real estate technology.
+              </p>
+            </div>
+            <div className="flex gap-8 text-sm font-bold">
+              <a href="#" className="hover:text-primary">About Us</a>
+              <a href="#" className="hover:text-primary">Listings</a>
+              <a href="#" className="hover:text-primary">Privacy Policy</a>
+              <a href="#" className="hover:text-primary">Contact</a>
+            </div>
+          </div>
+          <div className="mt-8 border-t pt-8 text-center text-xs text-muted-foreground">
+            © 2026 HomeVision Inc. All rights reserved. Built with TanStack & Shadcn.
+          </div>
         </div>
       </footer>
     </div>

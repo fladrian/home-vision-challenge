@@ -1,29 +1,22 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://api.example.com',
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-api.interceptors.request.use(
-  (config) => {
-    // Add token if exists
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
-
 api.interceptors.response.use(
-  (response) => response.data,
+  (response) => {
+    // Some APIs might return success: false even with 200 status
+    if (response.data && response.data.ok === false) {
+      return Promise.reject(new Error(response.data.message || 'API Error'));
+    }
+    return response.data;
+  },
   (error) => {
     const message = error.response?.data?.message || error.message;
-    // Handle global errors here
     return Promise.reject(new Error(message));
   }
 );
