@@ -1,4 +1,5 @@
 export * from './components/favorite-button';
+export * from './components/house-map';
 export * from './components/house-card';
 export * from './components/house-row';
 export * from './components/house-skeleton';

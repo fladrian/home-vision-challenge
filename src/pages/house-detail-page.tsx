@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useHousesInfinite, FavoriteButton } from '@/features/houses';
+import { useHousesInfinite, FavoriteButton, HouseMap } from '@/features/houses';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -151,25 +151,36 @@ export const HouseDetailPage = () => {
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-6">
+          <div className="mt-8 grid grid-cols-2 gap-4 border-y py-6">
             <div className="flex items-center gap-3">
-              <div className="flex size-10 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
-                <Calendar className="size-5" />
+              <div className="flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <Calendar className="size-4" />
               </div>
               <div>
-                <p className="text-sm font-bold">Built in {extraData.yearBuilt}</p>
-                <p className="text-xs text-muted-foreground">Modern Construction</p>
+                <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Built In</p>
+                <p className="text-sm font-bold">{extraData.yearBuilt}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="flex size-10 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
-                <ShieldCheck className="size-5" />
+              <div className="flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <ShieldCheck className="size-4" />
               </div>
               <div>
-                <p className="text-sm font-bold">Verified Owner</p>
-                <p className="text-xs text-muted-foreground">{house.homeowner}</p>
+                <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Verified Owner</p>
+                <p className="text-sm font-bold">{house.homeowner}</p>
               </div>
             </div>
+          </div>
+
+          <div className="mt-8 space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xl font-bold">Location</h3>
+              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                <MapPin className="size-4 text-primary" />
+                <span>{house.address}</span>
+              </div>
+            </div>
+            <HouseMap house={house} />
           </div>
 
           <div className="mt-10 flex gap-4">

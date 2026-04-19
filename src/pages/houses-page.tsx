@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { useState, useMemo, useRef, useLayoutEffect } from 'react';
+import { useWindowVirtualizer } from '@tanstack/react-virtual';
 import {
   useHousesInfinite,
   useHousesStore,
@@ -11,12 +11,14 @@ import {
 } from '@/features/houses';
 import { Button } from '@/components/ui/button';
 import { RefreshCcw, Home } from 'lucide-react';
+import { useWindowSize } from '@/hooks/use-window-size';
 
 export const HousesPage = () => {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   
   const { viewMode } = useHousesStore();
+  const { width } = useWindowSize();
   const {
     data,
     isLoading,
@@ -40,6 +42,48 @@ export const HousesPage = () => {
       return price >= min && price <= max;
     });
   }, [allHouses, minPrice, maxPrice]);
+
+  // Calculate column count based on window width (Tailwind breakpoints)
+  const columnCount = useMemo(() => {
+    if (viewMode === 'list') return 1;
+    if (width >= 1280) return 4; // xl
+    if (width >= 1024) return 3; // lg
+    if (width >= 768) return 2;  // md
+    return 1;
+  }, [width, viewMode]);
+
+  // Group houses into rows for virtualization
+  const virtualRows = useMemo(() => {
+    const rows = [];
+    for (let i = 0; i < filteredHouses.length; i += columnCount) {
+      rows.push(filteredHouses.slice(i, i + columnCount));
+    }
+    return rows;
+  }, [filteredHouses, columnCount]);
+
+  const parentRef = useRef<HTMLDivElement>(null);
+  const [scrollOffset, setScrollOffset] = useState(0);
+
+  useLayoutEffect(() => {
+    const calculateOffset = () => {
+      if (parentRef.current) {
+        const rect = parentRef.current.getBoundingClientRect();
+        setScrollOffset(rect.top + window.scrollY);
+      }
+    };
+
+    calculateOffset();
+    window.addEventListener('resize', calculateOffset);
+    return () => window.removeEventListener('resize', calculateOffset);
+  }, [width, viewMode]);
+
+  // Set up window virtualizer
+  const rowVirtualizer = useWindowVirtualizer({
+    count: virtualRows.length,
+    estimateSize: () => (viewMode === 'grid' ? 500 : 200),
+    overscan: 5,
+    scrollMargin: scrollOffset,
+  });
 
   if (isError) {
     return (
@@ -91,23 +135,44 @@ export const HousesPage = () => {
           <p className="text-muted-foreground">Try adjusting your filters or check back later.</p>
         </div>
       ) : (
-        <>
+        <div className="relative" ref={parentRef}>
           <div
-            className={
-              viewMode === 'grid'
-                ? 'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
-                : 'flex flex-col gap-4'
-            }
+            style={{
+              height: `${rowVirtualizer.getTotalSize()}px`,
+              width: '100%',
+              position: 'relative',
+            }}
           >
-            <AnimatePresence mode="popLayout">
-              {filteredHouses.map((house) => (
-                viewMode === 'grid' ? (
-                  <HouseCard key={`${house.id}-${viewMode}`} house={house} />
-                ) : (
-                  <HouseRow key={`${house.id}-${viewMode}`} house={house} />
-                )
-              ))}
-            </AnimatePresence>
+            {rowVirtualizer.getVirtualItems().map((virtualRow) => (
+              <div
+                key={virtualRow.key}
+                data-index={virtualRow.index}
+                ref={rowVirtualizer.measureElement}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  transform: `translateY(${virtualRow.start}px)`,
+                }}
+              >
+                <div
+                  className={
+                    viewMode === 'grid'
+                      ? 'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pb-6'
+                      : 'flex flex-col gap-4 pb-4'
+                  }
+                >
+                  {virtualRows[virtualRow.index].map((house) => (
+                    viewMode === 'grid' ? (
+                      <HouseCard key={house.id} house={house} />
+                    ) : (
+                      <HouseRow key={house.id} house={house} />
+                    )
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
 
           <InfiniteScrollTrigger
@@ -115,7 +180,7 @@ export const HousesPage = () => {
             hasNextPage={hasNextPage}
             isFetchingNextPage={isFetchingNextPage}
           />
-        </>
+        </div>
       )}
     </div>
   );

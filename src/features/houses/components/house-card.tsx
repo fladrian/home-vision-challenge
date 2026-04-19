@@ -27,15 +27,15 @@ export const HouseCard = ({ house }: HouseCardProps) => {
       className="group h-full"
     >
       <Link to={`/houses/${house.id}`}>
-        <Card className="h-full overflow-hidden border-none bg-white shadow-sm transition-shadow hover:shadow-xl dark:bg-zinc-900">
-          <div className="relative aspect-[4/3] overflow-hidden">
+        <Card className="h-full flex flex-col gap-0 overflow-hidden border-none bg-white p-0 shadow-sm transition-shadow hover:shadow-xl dark:bg-zinc-900">
+          <div className="relative aspect-4/3 overflow-hidden">
             <img
               src={house.photoURL}
               alt={house.address}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             
             <div className="absolute top-3 right-3">
               <FavoriteButton house={house} />
