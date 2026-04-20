@@ -1,6 +1,7 @@
 import { LinkedInIcon, GithubIcon } from '@/components/ui/icons';
 
 export const Footer = () => {
+  const author = "fladrian"
   return (
     <footer className="border-t bg-white py-10 dark:bg-zinc-950">
       <div className="container mx-auto px-4">
@@ -23,7 +24,7 @@ export const Footer = () => {
                 className="flex items-center gap-2 font-bold hover:text-primary transition-colors"
               >
                 <LinkedInIcon className="size-4" />
-                fladrian
+                {author}
               </a>
               <a
                 href="https://github.com/fladrian"
@@ -32,7 +33,7 @@ export const Footer = () => {
                 className="flex items-center gap-2 font-bold hover:text-primary transition-colors"
               >
                 <GithubIcon className="size-4" />
-                fladrian
+                {author}
               </a>
             </div>
           </div>
@@ -45,7 +46,7 @@ export const Footer = () => {
             rel="noopener noreferrer"
             className="font-bold hover:text-primary transition-colors"
           >
-            fladrian
+            {author}
           </a>
           . All rights reserved.
         </div>

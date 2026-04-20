@@ -1,4 +1,4 @@
-import { api } from '@/lib/axios';
+import { api } from '@/api/axios';
 import { housesResponseSchema } from '../types';
 import type { HousesQueryResponse } from '../types';
 

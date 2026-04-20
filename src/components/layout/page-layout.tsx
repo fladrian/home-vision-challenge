@@ -1,7 +1,7 @@
-import type { ReactNode } from 'react';
+import { cn } from '@/lib/utils';
+import type { PropsWithChildren } from 'react';
 
 interface PageLayoutProps {
-  children: ReactNode;
   /** Optional extra classes for the inner container */
   className?: string;
 }
@@ -11,9 +11,9 @@ interface PageLayoutProps {
  * horizontal padding, and bottom spacing for every page.
  * Top spacing is provided by the <main> element in App.tsx.
  */
-export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
+export const PageLayout = ({ children, className }: PropsWithChildren<PageLayoutProps>) => {
   return (
-    <div className={`container mx-auto px-4 pb-8 ${className}`}>
+    <div className={cn("container mx-auto px-4 pb-8", className)}>
       {children}
     </div>
   );

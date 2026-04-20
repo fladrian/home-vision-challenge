@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { BarChart2, Menu, X, Bookmark } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -14,11 +14,11 @@ export const Header = () => {
 
   const navItems = [
     { name: 'Saved', path: '/saved', icon: Bookmark, badge: favorites.length },
-    { name: 'Comparison Studio', path: '/comparison', icon: BarChart2 },
+    { name: 'Comparison Studio', path: '/studio', icon: BarChart2 },
   ];
 
   // Prevent scrolling when menu is open
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {

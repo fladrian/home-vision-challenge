@@ -11,13 +11,13 @@ export const generatePropertySummary = async (houseStr: string, extraDataStr: st
   if (!API_KEY) throw new Error("Gemini API Key missing.");
 
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
-  const prompt = `You are "HomeVision AI", an expert PropTech assistant.
-Write a 3-sentence dynamic, persuasive summary of the following property data:
-House: ${houseStr}
-Details: ${extraDataStr}
+  const prompt = `You are "PropsVision AI", an expert PropTech assistant.
+  Write a 3-sentence dynamic, persuasive summary of the following property data:
+  House: ${houseStr}
+  Details: ${extraDataStr}
 
-Calculate and mention the price per square foot if possible. Be enthusiastic but professional.
-Do not use markdown formatting like asterisks or bold text, just plain text.`;
+  Calculate and mention the price per square foot if possible. Be enthusiastic but professional.
+  Do not use markdown formatting like asterisks or bold text, just plain text.`;
 
   try {
     const result = await model.generateContent(prompt);
@@ -32,13 +32,13 @@ export const generateComparisonVerdict = async (propertiesStr: string): Promise<
   if (!API_KEY) throw new Error("Gemini API Key missing.");
 
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
-  const prompt = `You are "HomeVision AI", an expert PropTech data analyst.
-Compare the following real estate properties and provide a "HomeVision Verdict".
-Properties: ${propertiesStr}
+  const prompt = `You are "PropsVision AI", an expert PropTech data analyst.
+  Compare the following real estate properties and provide a "PropsVision Verdict".
+  Properties: ${propertiesStr}
 
-Provide a short, punchy 2-3 sentence verdict on which property offers the best value. 
-State standard reasoning (e.g. price, size, locations).
-Do not use markdown formatting like asterisks or bold text, just plain text.`;
+  Provide a short, punchy 2-3 sentence verdict on which property offers the best value. 
+  State standard reasoning (e.g. price, size, locations).
+  Do not use markdown formatting like asterisks or bold text, just plain text.`;
 
   try {
     const result = await model.generateContent(prompt);

@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import type { House } from '../types';
 import { generatePropertySummary } from '@/lib/gemini';
 
+import { Skeleton } from '@/components/ui/skeleton';
+
 interface AISummaryProps {
   house: House;
   extraData: {
@@ -69,12 +71,18 @@ export const AISummary = ({ house, extraData }: AISummaryProps) => {
                <span className="flex items-center gap-2 text-amber-600">
                  <AlertTriangle className="size-4"/> {errorMsg}
                </span>
+            ) : isGenerating ? (
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+                <Skeleton className="h-4 w-4/6" />
+              </div>
             ) : (
               <TypewriterText text={fullText} speed={15} />
             )}
             
-            {isGenerating && (
-              <span className="ml-1 inline-block w-1.5 h-4 bg-indigo-500 animate-pulse align-middle" />
+            {!isGenerating && fullText && (
+               <span className="ml-1 inline-block w-1.5 h-4 bg-indigo-500 animate-pulse align-middle" />
             )}
           </div>
         )}

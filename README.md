@@ -15,12 +15,23 @@ Follow these steps to run the application locally:
 pnpm install
 
 # 2. Set up environment variables
-# Create a .env file and add your Gemini API key
-# VITE_GEMINI_API_KEY=your_key_here
+# Create a .env file and add the following variables:
+VITE_API_URL=https://staging.homevision.co/api_project
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
 
 # 3. Start development server
 pnpm dev
 ```
+
+### 🔑 How to get a Gemini API Key
+1. Go to [Google AI Studio](https://aistudio.google.com/).
+2. Sign in with your Google account.
+3. Click on **"Get API key"** in the sidebar.
+4. Click **"Create API key"** (you can choose an existing project or a new one).
+5. Copy the generated key and paste it into your `.env` file as `VITE_GEMINI_API_KEY`.
+
+> [!IMPORTANT]
+> **VITE_API_URL**: This is the base endpoint for the property listings. If you don't provide it, the application won't be able to fetch the houses data.
 
 ---
 

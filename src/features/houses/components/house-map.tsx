@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -37,7 +38,10 @@ export const HouseMap = ({ house, className }: HouseMapProps) => {
   }, [house.id]);
 
   return (
-    <div className={`relative h-[280px] w-full overflow-hidden rounded-2xl border bg-zinc-100 shadow-sm dark:bg-zinc-800 ${className}`}>
+    <div className={cn(
+      "relative h-[280px] w-full overflow-hidden rounded-2xl border bg-zinc-100 shadow-sm dark:bg-zinc-800",
+      className
+    )}>
       <MapContainer
         center={position}
         zoom={15}

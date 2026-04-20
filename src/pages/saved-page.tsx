@@ -19,7 +19,7 @@ export const SavedPage = () => {
              <h1 className="text-4xl font-black tracking-tight flex-1">Saved <span className="text-primary italic">Properties</span></h1>
              {favorites.length > 0 && (
                  <Button asChild className="rounded-xl font-bold">
-                     <Link to="/comparison">
+                     <Link to="/studio">
                         <BarChart2 className="mr-2 size-4" />
                         Open Comparison Studio
                      </Link>

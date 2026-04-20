@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, BarChart2, Sparkles, Loader2, AlertTriangle } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { TypewriterText } from '@/components/ui/typewriter-text';
 import { PageLayout } from '@/components/layout/page-layout';
 
@@ -92,7 +93,11 @@ export const ComparisonPage = () => {
                     >
                       {/* Intercept overlay for selection */}
                       <div 
-                        className={`absolute inset-0 z-10 cursor-pointer rounded-xl border-[3px] transition-all duration-300 ${isSelected ? 'border-primary' : 'border-transparent hover:border-primary/50'} ${!canSelect && !isSelected ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={cn(
+                          "absolute inset-0 z-10 cursor-pointer rounded-xl border-[3px] transition-all duration-300",
+                          isSelected ? 'border-primary' : 'border-transparent hover:border-primary/50',
+                          !canSelect && !isSelected && 'opacity-50 cursor-not-allowed'
+                        )}
                         onClick={() => {
                           if (canSelect) toggleSelection(house.id);
                         }}
@@ -101,7 +106,10 @@ export const ComparisonPage = () => {
                           <Checkbox 
                             checked={isSelected}
                             disabled={!canSelect}
-                            className={`size-5 ${isSelected ? 'data-[state=checked]:bg-primary' : ''}`}
+                            className={cn(
+                              "size-5",
+                              isSelected && 'data-[state=checked]:bg-primary'
+                            )}
                           />
                         </div>
                       </div>
