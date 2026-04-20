@@ -80,7 +80,7 @@ export const HouseDetailPage = () => {
           <motion.div 
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="group relative aspect-[4/3] overflow-hidden rounded-3xl bg-zinc-100 shadow-xl dark:bg-zinc-800"
+            className="group relative aspect-4/3 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl dark:bg-zinc-800"
           >
             <img
               src={house.photoURL}
@@ -197,15 +197,6 @@ export const HouseDetailPage = () => {
               <MortgageCalculator price={house.price} />
             </TabsContent>
           </Tabs>
-
-          <div className="mt-10 flex gap-4">
-            <Button size="lg" className="h-14 flex-1 text-lg font-black rounded-2xl">
-              Inquire Now
-            </Button>
-            <Button size="lg" variant="outline" className="h-14 flex-1 text-lg font-black rounded-2xl">
-              Virtual Tour
-            </Button>
-          </div>
         </div>
       </div>
     </motion.div>

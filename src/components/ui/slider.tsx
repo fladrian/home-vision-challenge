@@ -29,28 +29,25 @@ function Slider({
       min={min}
       max={max}
       className={cn(
-        "relative flex w-full touch-none items-center select-none data-disabled:opacity-50",
+        "relative flex h-5 w-full touch-none items-center select-none data-disabled:opacity-50",
         className
       )}
-      style={{ height: '20px' }}
       {...props}
     >
       <SliderPrimitive.Track
         data-slot="slider-track"
-        className="relative w-full overflow-hidden rounded-full bg-zinc-300 dark:bg-zinc-600"
-        style={{ height: '6px', flexShrink: 0 }}
+        className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-zinc-300 dark:bg-zinc-600"
       >
         <SliderPrimitive.Range
           data-slot="slider-range"
-          style={{ position: 'absolute', height: '100%' }}
-          className="bg-primary"
+          className="absolute h-full bg-primary"
         />
       </SliderPrimitive.Track>
       {Array.from({ length: _values.length }, (_, index) => (
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
           key={index}
-          className="block size-4 shrink-0 rounded-full border-2 border-primary bg-white shadow-md ring-primary/30 transition-[box-shadow] select-none hover:ring-4 focus-visible:ring-4 focus-visible:outline-none active:ring-4 disabled:pointer-events-none disabled:opacity-50"
+          className="block size-4 shrink-0 rounded-full border-2 border-primary bg-white shadow-md ring-primary/30 transition-shadow select-none hover:ring-4 focus-visible:ring-4 focus-visible:outline-none active:ring-4 disabled:pointer-events-none disabled:opacity-50"
         />
       ))}
     </SliderPrimitive.Root>
