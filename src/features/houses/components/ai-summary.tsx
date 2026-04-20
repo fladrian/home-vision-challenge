@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Sparkles, AlertTriangle } from 'lucide-react';
 import { TypewriterText } from '@/components/ui/typewriter-text';
+import { Button } from '@/components/ui/button';
 import type { House } from '../types';
 import { generatePropertySummary } from '@/lib/gemini';
 
@@ -20,39 +21,24 @@ export const AISummary = ({ house, extraData }: AISummaryProps) => {
   const [fullText, setFullText] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [hasRequested, setHasRequested] = useState(false);
 
-  useEffect(() => {
-    let isMounted = true;
+  const fetchSummary = async () => {
+    setHasRequested(true);
+    setIsGenerating(true);
+    setErrorMsg('');
+    setFullText('');
     
-    const fetchSummary = async () => {
-      setIsGenerating(true);
-      setErrorMsg('');
-      setFullText('');
-      
-      try {
-        const text = await generatePropertySummary(JSON.stringify(house), JSON.stringify(extraData));
-        if (isMounted) {
-          setFullText(text);
-          setIsGenerating(false);
-        }
-      } catch (e: unknown) {
-        if (isMounted) {
-          setIsGenerating(false);
-          const message = e instanceof Error ? e.message : "Something went wrong.";
-          setErrorMsg(message);
-        }
-      }
-    };
-
-    const startTimeout = setTimeout(() => {
-       fetchSummary();
-    }, 100);
-
-    return () => {
-      isMounted = false;
-      clearTimeout(startTimeout);
-    };
-  }, [house, extraData]);
+    try {
+      const text = await generatePropertySummary(JSON.stringify(house), JSON.stringify(extraData));
+      setFullText(text);
+    } catch (e: unknown) {
+      const message = e instanceof Error ? e.message : "Something went wrong.";
+      setErrorMsg(message);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
 
   return (
     <Card className="rounded-3xl border shadow-sm border-indigo-500/20 bg-linear-to-br from-indigo-50/50 to-white dark:from-indigo-950/20 dark:to-zinc-900/50">
@@ -63,19 +49,35 @@ export const AISummary = ({ house, extraData }: AISummaryProps) => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="text-sm leading-relaxed text-muted-foreground relative min-h-[80px]">
-          {errorMsg ? (
-             <span className="flex items-center gap-2 text-amber-600">
-               <AlertTriangle className="size-4"/> {errorMsg}
-             </span>
-          ) : (
-            <TypewriterText text={fullText} speed={15} />
-          )}
-          
-          {isGenerating && (
-            <span className="ml-1 inline-block w-1.5 h-4 bg-indigo-500 animate-pulse align-middle" />
-          )}
-        </div>
+        {!hasRequested ? (
+          <div className="flex flex-col items-start gap-2">
+            <p className="text-sm text-muted-foreground">
+              Generate an AI summary to get deeper insights about this property.
+            </p>
+            <Button 
+                onClick={fetchSummary} 
+                size="sm" 
+                variant="outline" 
+                className="mt-2 text-indigo-600 dark:text-indigo-400 border-indigo-200 hover:bg-indigo-50 dark:border-indigo-800 dark:hover:bg-indigo-900/50 rounded-xl font-bold"
+            >
+              <Sparkles className="mr-2 size-3" /> Generate AI Analysis
+            </Button>
+          </div>
+        ) : (
+          <div className="text-sm leading-relaxed text-muted-foreground relative min-h-[80px]">
+            {errorMsg ? (
+               <span className="flex items-center gap-2 text-amber-600">
+                 <AlertTriangle className="size-4"/> {errorMsg}
+               </span>
+            ) : (
+              <TypewriterText text={fullText} speed={15} />
+            )}
+            
+            {isGenerating && (
+              <span className="ml-1 inline-block w-1.5 h-4 bg-indigo-500 animate-pulse align-middle" />
+            )}
+          </div>
+        )}
       </CardContent>
     </Card>
   );

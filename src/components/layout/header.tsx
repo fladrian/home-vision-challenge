@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, BarChart2, Menu, X, Bookmark } from 'lucide-react';
+import { BarChart2, Menu, X, Bookmark } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useHousesStore } from '@/features/houses';
+import homevisionLogo from '@/assets/branding/homevision_logo.svg';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,12 +33,15 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md dark:bg-zinc-950/80">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2 transition-transform hover:scale-105">
-          <div className="flex size-10 items-center justify-center rounded-xl bg-primary shadow-lg shadow-primary/20">
-            <Home className="size-6 text-white" />
+          <div className="flex flex-col">
+            <span className="text-2xl font-black tracking-tighter text-zinc-900 dark:text-white leading-none">
+              Props<span className="text-primary italic">Vision</span>
+            </span>
+            <div className="flex items-center gap-1 mt-1">
+              <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider">by</span>
+              <img src={homevisionLogo} alt="HomeVision Logo" className="h-3" />
+            </div>
           </div>
-          <span className="text-2xl font-black tracking-tighter text-zinc-900 dark:text-white">
-            HOME<span className="text-primary italic">VISION</span>
-          </span>
         </Link>
 
         {/* Desktop Navigation */}

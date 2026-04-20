@@ -1,10 +1,8 @@
 import { useState, useMemo } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-// We'll assume the slider is installed. If not, we have a fallback or wait for it.
 import { Slider } from '@/components/ui/slider';
-import { Calculator } from 'lucide-react';
 
 interface MortgageCalculatorProps {
   price: number;
@@ -52,13 +50,6 @@ export const MortgageCalculator = ({ price }: MortgageCalculatorProps) => {
 
   return (
     <Card className="rounded-3xl border shadow-sm dark:bg-zinc-900/50">
-      <CardHeader className="bg-zinc-50/50 dark:bg-zinc-800/20 border-b pb-4 rounded-t-3xl">
-        <CardTitle className="flex items-center gap-2 text-xl font-black">
-          <Calculator className="size-5 text-primary" />
-          Mortgage Estimator
-        </CardTitle>
-      </CardHeader>
-      
       <CardContent className="p-6 space-y-6">
         {/* Sliders / Inputs */}
         <div className="space-y-5">

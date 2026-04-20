@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 
 /**
  * Custom hook that returns the current window width and height.
@@ -10,7 +10,7 @@ export const useWindowSize = () => {
     height: typeof window !== 'undefined' ? window.innerHeight : 0,
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,

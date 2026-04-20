@@ -8,6 +8,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, BarChart2, Sparkles, Loader2, AlertTriangle } from 'lucide-react';
 import { TypewriterText } from '@/components/ui/typewriter-text';
+import { PageLayout } from '@/components/layout/page-layout';
 
 export const ComparisonPage = () => {
   const { 
@@ -35,7 +36,7 @@ export const ComparisonPage = () => {
   const housesToCompare = selectedIds.length > 0 ? selectedFavorites : favorites;
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <PageLayout>
       <div className="mb-8 flex flex-col gap-4">
         <div>
           <Link to="/saved" className="mb-4 inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
@@ -66,7 +67,7 @@ export const ComparisonPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* Left Column: Property Matrix */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-8 space-y-6">
             <div className="flex justify-between items-center bg-zinc-100 dark:bg-zinc-800/50 p-4 rounded-2xl">
               <span className="font-bold">Select properties to compare (Max 3)</span>
               <span className="text-sm font-medium bg-white dark:bg-zinc-900 px-3 py-1 rounded-full shadow-sm">
@@ -74,7 +75,7 @@ export const ComparisonPage = () => {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               <AnimatePresence>
                 {favorites.map((house) => {
                   const isSelected = selectedIds.includes(house.id);
@@ -91,16 +92,16 @@ export const ComparisonPage = () => {
                     >
                       {/* Intercept overlay for selection */}
                       <div 
-                        className={`absolute inset-0 z-10 cursor-pointer rounded-xl border-4 transition-all duration-300 ${isSelected ? 'border-primary' : 'border-transparent hover:border-primary/50'} ${!canSelect && !isSelected ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={`absolute inset-0 z-10 cursor-pointer rounded-xl border-[3px] transition-all duration-300 ${isSelected ? 'border-primary' : 'border-transparent hover:border-primary/50'} ${!canSelect && !isSelected ? 'opacity-50 cursor-not-allowed' : ''}`}
                         onClick={() => {
                           if (canSelect) toggleSelection(house.id);
                         }}
                       >
-                        <div className="absolute top-4 left-4 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm rounded-lg p-2 shadow-sm">
+                        <div className="absolute top-2 left-2 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm rounded-lg p-1.5 shadow-sm">
                           <Checkbox 
                             checked={isSelected}
                             disabled={!canSelect}
-                            className={`size-6 ${isSelected ? 'data-[state=checked]:bg-primary' : ''}`}
+                            className={`size-5 ${isSelected ? 'data-[state=checked]:bg-primary' : ''}`}
                           />
                         </div>
                       </div>
@@ -116,7 +117,7 @@ export const ComparisonPage = () => {
           </div>
 
           {/* Right Column: Comparative Metrics */}
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-4 relative">
             <div className="sticky top-28 space-y-6">
               <Card className="rounded-3xl border shadow-lg border-primary/20 bg-linear-to-br from-primary/5 to-white dark:from-primary/10 dark:to-zinc-900 overflow-hidden">
                 <CardHeader className="bg-white/50 dark:bg-zinc-950/50 backdrop-blur-md border-b flex flex-row items-center justify-between">
@@ -214,6 +215,6 @@ export const ComparisonPage = () => {
           </div>
         </div>
       )}
-    </div>
+    </PageLayout>
   );
 };

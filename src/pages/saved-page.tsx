@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Bookmark, BarChart2 } from 'lucide-react';
 import { useHousesStore, HouseCard } from '@/features/houses';
 import { Button } from '@/components/ui/button';
+import { PageLayout } from '@/components/layout/page-layout';
 
 export const SavedPage = () => {
   const { favorites } = useHousesStore();
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <PageLayout>
       <div className="mb-8 flex flex-col gap-4">
         <div>
           <Link to="/" className="mb-4 inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
@@ -51,6 +52,6 @@ export const SavedPage = () => {
             ))}
         </div>
       )}
-    </div>
+    </PageLayout>
   );
 };
