@@ -80,7 +80,7 @@ export const HousesPage = () => {
   return (
     <PageLayout>
       <div className="mb-10 max-w-4xl">
-        <h1 className="text-4xl font-black tracking-tight sm:text-5xl leading-[1.1]">
+        <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-[1.1]">
           Precision <span className="text-primary italic">property intelligence</span>.
         </h1>
         <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">

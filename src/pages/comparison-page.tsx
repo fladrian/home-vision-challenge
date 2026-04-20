@@ -44,8 +44,8 @@ export const ComparisonPage = () => {
             <ArrowLeft className="mr-2 size-4" />
             Back to Saved
           </Link>
-          <h1 className="text-4xl font-black tracking-tight">Comparison <span className="text-primary italic">Studio</span></h1>
-          <p className="text-muted-foreground text-lg mt-2">
+          <h1 className="text-3xl sm:text-4xl font-black tracking-tight">Comparison <span className="text-primary italic">Studio</span></h1>
+          <p className="text-muted-foreground text-base sm:text-lg mt-3 leading-relaxed">
             Professional analysis of your saved properties to evaluate market value and investment potential.
           </p>
         </div>
@@ -69,14 +69,14 @@ export const ComparisonPage = () => {
           
           {/* Left Column: Property Matrix */}
           <div className="lg:col-span-8 space-y-6">
-            <div className="flex justify-between items-center bg-zinc-100 dark:bg-zinc-800/50 p-4 rounded-2xl">
-              <span className="font-bold">Select properties to compare (Max 3)</span>
-              <span className="text-sm font-medium bg-white dark:bg-zinc-900 px-3 py-1 rounded-full shadow-sm">
+            <div className="flex justify-between items-center bg-zinc-100 dark:bg-zinc-800/50 p-5 rounded-2xl">
+              <span className="font-bold text-sm sm:text-base">Select properties to compare (Max 3)</span>
+              <span className="text-xs sm:text-sm font-medium bg-white dark:bg-zinc-900 px-3 py-1.5 rounded-full shadow-sm whitespace-nowrap">
                 {selectedIds.length} / 3 Selected
               </span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               <AnimatePresence>
                 {favorites.map((house) => {
                   const isSelected = selectedIds.includes(house.id);
@@ -153,7 +153,7 @@ export const ComparisonPage = () => {
                            <AlertTriangle className="size-4"/> {evaluationError}
                         </span>
                       ) : (
-                        <TypewriterText text={aiVerdict} speed={15} />
+                        <TypewriterText text={aiVerdict} speed={15} className={cn(isEvaluating && "animate-pulse")} />
                       )}
                     </div>
                     <Button 

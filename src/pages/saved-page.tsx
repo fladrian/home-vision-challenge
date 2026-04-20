@@ -15,10 +15,10 @@ export const SavedPage = () => {
             <ArrowLeft className="mr-2 size-4" />
             Back to Listings
           </Link>
-          <div className="flex items-center gap-4">
-             <h1 className="text-4xl font-black tracking-tight flex-1">Saved <span className="text-primary italic">Properties</span></h1>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+             <h1 className="text-3xl sm:text-4xl font-black tracking-tight">Saved <span className="text-primary italic">Properties</span></h1>
              {favorites.length > 0 && (
-                 <Button asChild className="rounded-xl font-bold">
+                 <Button asChild className="rounded-xl font-bold w-full sm:w-auto">
                      <Link to="/studio">
                         <BarChart2 className="mr-2 size-4" />
                         Open Comparison Studio
@@ -26,9 +26,9 @@ export const SavedPage = () => {
                  </Button>
              )}
           </div>
-          <p className="text-muted-foreground text-lg mt-2">
-            You have {favorites.length} saved properties.
-          </p>
+           <p className="text-muted-foreground text-base sm:text-lg mt-3">
+             You have {favorites.length} saved properties.
+           </p>
         </div>
       </div>
 

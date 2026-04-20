@@ -101,7 +101,7 @@ export const MortgageCalculator = ({ price }: MortgageCalculatorProps) => {
           <div className="flex items-baseline justify-between mb-2">
             <span className="text-sm font-bold text-muted-foreground">Estimated Payment</span>
             <div className="flex items-baseline gap-1">
-              <span className="text-3xl font-black text-primary">{formatCurrency(monthlyPayment)}</span>
+              <span className="text-2xl sm:text-3xl font-black text-primary">{formatCurrency(monthlyPayment)}</span>
               <span className="text-xs font-bold text-muted-foreground">/mo</span>
             </div>
           </div>
@@ -110,7 +110,7 @@ export const MortgageCalculator = ({ price }: MortgageCalculatorProps) => {
              <div className="h-2 w-1/2 bg-primary rounded-l-full" title="Principal" />
              <div className="h-2 w-1/2 bg-zinc-300 dark:bg-zinc-600 rounded-r-full" title="Interest" />
           </div>
-          <div className="flex justify-between mt-2 text-xs font-bold text-muted-foreground">
+          <div className="flex flex-col sm:flex-row justify-between mt-2 text-xs font-bold text-muted-foreground gap-1 sm:gap-0">
              <span>Principal: {formatCurrency(principal)}</span>
              <span>Interest: {formatCurrency(totalInterest)}</span>
           </div>

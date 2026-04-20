@@ -54,7 +54,7 @@ export const HouseCard = ({ house }: HouseCardProps) => {
               <MapPin className="size-3.5 text-primary" />
               <span className="line-clamp-1">{house.address.split(',').slice(-2).join(',')}</span>
             </div>
-            <h3 className="mb-1 line-clamp-1 text-lg font-bold tracking-tight">
+            <h3 className="mb-1 line-clamp-1 text-base sm:text-lg font-bold tracking-tight">
               {house.address.split(',')[0]}
             </h3>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -64,7 +64,7 @@ export const HouseCard = ({ house }: HouseCardProps) => {
           </CardContent>
 
           <CardFooter className="flex items-center justify-between border-t bg-zinc-50/50 p-4 dark:bg-zinc-800/20">
-            <span className="text-xl font-black text-primary">{formattedPrice}</span>
+            <span className="text-lg sm:text-xl font-black text-primary">{formattedPrice}</span>
           </CardFooter>
         </Card>
       </Link>

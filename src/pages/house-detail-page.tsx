@@ -108,46 +108,46 @@ export const HouseDetailPage = () => {
 
         <div className="flex flex-col">
           <div className="mb-6">
-            <h1 className="mb-2 text-4xl font-black tracking-tight lg:text-5xl">{house.address}</h1>
+            <h1 className="mb-2 text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight">{house.address}</h1>
             <div className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="size-5 text-primary" />
-              <span className="text-lg font-medium">{house.address.split(',').slice(-2).join(',')}</span>
+              <span className="text-base sm:text-lg font-medium">{house.address.split(',').slice(-2).join(',')}</span>
             </div>
           </div>
 
           <div className="mb-8 flex items-baseline gap-2">
-            <span className="text-4xl font-black text-primary">{formattedPrice}</span>
-            <span className="text-sm font-medium text-muted-foreground">/ Total Price</span>
+            <span className="text-3xl sm:text-4xl font-black text-primary">{formattedPrice}</span>
+            <span className="text-xs sm:text-sm font-medium text-muted-foreground">/ Total Price</span>
           </div>
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             <div className="flex flex-col rounded-2xl border bg-zinc-50 p-4 dark:bg-zinc-900/50">
               <Bed className="mb-2 size-5 text-primary" />
-              <span className="text-xl font-bold">{extraData.beds}</span>
-              <span className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Bedrooms</span>
+              <span className="text-lg sm:text-xl font-bold">{extraData.beds}</span>
+              <span className="text-[10px] sm:text-xs text-muted-foreground uppercase font-bold tracking-wider">Bedrooms</span>
             </div>
             <div className="flex flex-col rounded-2xl border bg-zinc-50 p-4 dark:bg-zinc-900/50">
               <Bath className="mb-2 size-5 text-primary" />
-              <span className="text-xl font-bold">{extraData.baths}</span>
-              <span className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Bathrooms</span>
+              <span className="text-lg sm:text-xl font-bold">{extraData.baths}</span>
+              <span className="text-[10px] sm:text-xs text-muted-foreground uppercase font-bold tracking-wider">Bathrooms</span>
             </div>
             <div className="flex flex-col rounded-2xl border bg-zinc-50 p-4 dark:bg-zinc-900/50">
               <Maximize className="mb-2 size-5 text-primary" />
-              <span className="text-xl font-bold">{extraData.sqft}</span>
-              <span className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Sq Ft</span>
+              <span className="text-lg sm:text-xl font-bold">{extraData.sqft}</span>
+              <span className="text-[10px] sm:text-xs text-muted-foreground uppercase font-bold tracking-wider">Sq Ft</span>
             </div>
             <div className="flex flex-col rounded-2xl border bg-zinc-50 p-4 dark:bg-zinc-900/50">
               <Car className="mb-2 size-5 text-primary" />
-              <span className="text-xl font-bold">{extraData.garage}</span>
-              <span className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Garage</span>
+              <span className="text-lg sm:text-xl font-bold">{extraData.garage}</span>
+              <span className="text-[10px] sm:text-xs text-muted-foreground uppercase font-bold tracking-wider">Garage</span>
             </div>
           </div>
 
           <Tabs defaultValue="details" className="mt-8 w-full">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="details">Details</TabsTrigger>
-              <TabsTrigger value="location">Location</TabsTrigger>
-              <TabsTrigger value="calculator">Mortgage Estimator</TabsTrigger>
+            <TabsList className="flex w-full h-auto min-h-10 overflow-x-auto justify-start sm:grid sm:grid-cols-3 gap-1 p-1">
+              <TabsTrigger value="details" className="flex-1 sm:flex-none">Details</TabsTrigger>
+              <TabsTrigger value="location" className="flex-1 sm:flex-none">Location</TabsTrigger>
+              <TabsTrigger value="calculator" className="flex-1 sm:flex-none">Mortgage Estimator</TabsTrigger>
             </TabsList>
             
             <TabsContent value="details" className="mt-6 space-y-8">
