@@ -5,6 +5,8 @@ export * from './components/house-row';
 export * from './components/house-skeleton';
 export * from './components/house-filters';
 export * from './components/infinite-scroll-trigger';
+export * from './components/ai-summary';
+export * from './components/mortgage-calculator';
 export * from './api/get-houses';
 export * from './stores/use-houses-store';
 export * from './hooks';

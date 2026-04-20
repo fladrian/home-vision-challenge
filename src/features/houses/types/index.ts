@@ -5,7 +5,7 @@ export const houseSchema = z.object({
   address: z.string(),
   homeowner: z.string(),
   price: z.number(),
-  photoURL: z.string().url(),
+  photoURL: z.url(),
 });
 
 export const housesResponseSchema = z.object({

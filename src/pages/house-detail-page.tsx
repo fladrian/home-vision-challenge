@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useHousesInfinite, FavoriteButton, HouseMap } from '@/features/houses';
+import { useHousesInfinite, FavoriteButton, HouseMap, AISummary, MortgageCalculator } from '@/features/houses';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
+import { PageLayout } from '@/components/layout/page-layout';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   ArrowLeft, 
   MapPin, 
@@ -64,11 +65,11 @@ export const HouseDetailPage = () => {
   }).format(house.price);
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="container mx-auto px-4 py-8"
-    >
+    <PageLayout>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
       <Link to="/" className="mb-6 inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
         <ArrowLeft className="mr-2 size-4" />
         Back to Results
@@ -79,7 +80,7 @@ export const HouseDetailPage = () => {
           <motion.div 
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="group relative aspect-[4/3] overflow-hidden rounded-3xl bg-zinc-100 shadow-xl dark:bg-zinc-800"
+            className="group relative aspect-4/3 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl dark:bg-zinc-800"
           >
             <img
               src={house.photoURL}
@@ -142,57 +143,63 @@ export const HouseDetailPage = () => {
             </div>
           </div>
 
-          <Separator className="my-8" />
+          <Tabs defaultValue="details" className="mt-8 w-full">
+            <TabsList className="grid w-full grid-cols-3">
+              <TabsTrigger value="details">Details</TabsTrigger>
+              <TabsTrigger value="location">Location</TabsTrigger>
+              <TabsTrigger value="calculator">Mortgage Estimator</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="details" className="mt-6 space-y-8">
+              <AISummary house={house} extraData={extraData} />
+              
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold">Property Description</h3>
+                <p className="leading-relaxed text-muted-foreground">
+                  {extraData.description}
+                </p>
+              </div>
 
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold">Property Description</h3>
-            <p className="leading-relaxed text-muted-foreground">
-              {extraData.description}
-            </p>
-          </div>
-
-          <div className="mt-8 grid grid-cols-2 gap-4 border-y py-6">
-            <div className="flex items-center gap-3">
-              <div className="flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Calendar className="size-4" />
+              <div className="grid grid-cols-2 gap-4 border-y py-6">
+                <div className="flex items-center gap-3">
+                  <div className="flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <Calendar className="size-4" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Built In</p>
+                    <p className="text-sm font-bold">{extraData.yearBuilt}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <ShieldCheck className="size-4" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Verified Owner</p>
+                    <p className="text-sm font-bold">{house.homeowner}</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Built In</p>
-                <p className="text-sm font-bold">{extraData.yearBuilt}</p>
+            </TabsContent>
+            
+            <TabsContent value="location" className="mt-6 space-y-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-bold">Location</h3>
+                <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <MapPin className="size-4 text-primary" />
+                  <span>{house.address}</span>
+                </div>
               </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <ShieldCheck className="size-4" />
-              </div>
-              <div>
-                <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Verified Owner</p>
-                <p className="text-sm font-bold">{house.homeowner}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-xl font-bold">Location</h3>
-              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <MapPin className="size-4 text-primary" />
-                <span>{house.address}</span>
-              </div>
-            </div>
-            <HouseMap house={house} />
-          </div>
-
-          <div className="mt-10 flex gap-4">
-            <Button size="lg" className="h-14 flex-1 text-lg font-black rounded-2xl">
-              Inquire Now
-            </Button>
-            <Button size="lg" variant="outline" className="h-14 flex-1 text-lg font-black rounded-2xl">
-              Virtual Tour
-            </Button>
-          </div>
+              <HouseMap house={house} />
+            </TabsContent>
+            
+            <TabsContent value="calculator" className="mt-6">
+              <MortgageCalculator price={house.price} />
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
     </motion.div>
+    </PageLayout>
   );
 };

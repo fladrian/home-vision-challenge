@@ -65,7 +65,6 @@ export const HouseCard = ({ house }: HouseCardProps) => {
 
           <CardFooter className="flex items-center justify-between border-t bg-zinc-50/50 p-4 dark:bg-zinc-800/20">
             <span className="text-xl font-black text-primary">{formattedPrice}</span>
-            <span className="text-xs font-medium text-muted-foreground">ID: {house.id}</span>
           </CardFooter>
         </Card>
       </Link>

@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { MapPin, User, Tag, ChevronRight } from 'lucide-react';
 import type { House } from '../types';
 import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { FavoriteButton } from './favorite-button';
 import { Link } from 'react-router-dom';
 
@@ -42,9 +41,6 @@ export const HouseRow = ({ house }: HouseRowProps) => {
 
           <div className="flex flex-1 flex-col justify-center gap-1 overflow-hidden px-2">
             <div className="flex items-center gap-2">
-              <Badge variant="outline" className="text-[10px] uppercase tracking-wider">
-                ID: {house.id}
-              </Badge>
               <div className="flex items-center gap-1 text-xs text-muted-foreground font-medium">
                 <MapPin className="size-3 text-primary" />
                 <span className="line-clamp-1">{house.address.split(',').slice(-1)}</span>
