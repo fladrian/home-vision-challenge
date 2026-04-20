@@ -79,12 +79,13 @@ export const HousesPage = () => {
 
   return (
     <PageLayout>
-      <div className="mb-6">
-        <h1 className="text-3xl font-black tracking-tight sm:text-4xl">
-          Find your <span className="text-primary italic">next home</span>
+      <div className="mb-10 max-w-4xl">
+        <h1 className="text-4xl font-black tracking-tight sm:text-5xl leading-[1.1]">
+          Precision <span className="text-primary italic">property intelligence</span>.
         </h1>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Browse and save the ones that catch your eye.
+        <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          Compare, evaluate, and assess properties with data-driven accuracy. 
+          Streamline your workflow and turn complex insights into smarter collateral decisions.
         </p>
       </div>
 

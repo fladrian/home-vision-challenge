@@ -10,7 +10,7 @@ export const Footer = () => {
               Props<span className="text-primary italic">Vision</span>
             </span>
             <p className="mt-1 text-sm text-muted-foreground max-w-xs">
-              A real estate platform built with modern tooling.
+              Smart property evaluation and collateral intelligence.
             </p>
           </div>
           <div className="flex flex-col items-start gap-3 text-sm md:items-end">
