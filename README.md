@@ -46,18 +46,46 @@ pnpm dev
 - **Side-by-Side Analysis**: Select multiple properties to compare their technical specs, pricing, and collateral value.
 - **Actionable Insights**: Centralized hub to evaluate multiple investment opportunities at once.
 
-### 3. AI-Powered Property Intelligence
-- **AI Summary (Property Detail)**: Utilizes Google Gemini AI to analyze property descriptions and provide concise, professional summaries for underwriters.
-- **AI Comparative Estimation**: In the Comparison Studio, the AI analyzes selected properties to provide a smart market estimation and comparative analysis report.
+### 3. AI & Financial Intelligence
+- **AI Summary**: Utilizes Google Gemini AI to analyze property technical data and provide professional summaries for underwriters.
+- **AI Comparative Verdict**: In the Comparison Studio, the AI analyzes selected properties to provide a smart market estimation and "best value" verdict.
+- **Mortgage Estimator**: Real-time financial calculator with adjustable down payment, interest rates, and loan terms to evaluate monthly affordability.
 
-### 4. Saved Collection
-- **Persistent Favorites**: Manage a collection of properties of interest.
-- **State Persistence**: Uses Zustand with middleware to ensure your saved properties are preserved across browser sessions.
+### 4. Geospatial & Visual Tools
+- **Interactive Mapping**: Built with Leaflet, providing precise geolocation for every property listing.
+- **Map View Integration**: Visualize property location directly within the detail page via a dedicated tab.
+- **Dynamic Image Gallery**: Immersive property visuals with optimized lazy loading.
 
-### 5. Premium UI/UX
-- **Modern Aesthetics**: Built with a "Prop-Tech" design language using Tailwind CSS 4 and Shadcn/UI.
-- **Dark Mode Support**: Full system-aware dark mode for comfortable long-session analysis.
-- **Micro-Animations**: Smooth transitions powered by Framer Motion.
+### 5. Persistent Portfolio
+- **Saved Collection**: Manage a curated list of properties for future analysis.
+- **Zustand Persistence**: Saved properties are preserved across browser sessions using local storage middleware.
+
+### 6. Premium UI/UX
+- **Prop-Tech Aesthetics**: A modern, "airy" and spacious design language built with Tailwind CSS 4 and Shadcn/UI.
+- **Responsive Navigation**: Optimized for mobile and desktop, featuring scrollable tab navigation and stacked layouts for small screens.
+- **Dark Mode & Motion**: System-aware dark mode and smooth transitions powered by Framer Motion.
+
+---
+
+## 🗺️ View Breakdown & Routes
+
+### 🏠 Main Listings (`/`)
+The entry point for property discovery.
+- **Features**: Infinite scroll (TanStack Virtual), Grid/List view toggle, and search/filter controls.
+- **UX**: High-performance rendering for massive datasets.
+
+### 📄 Property Detail (`/houses/:id`)
+A deep-dive into individual property collateral.
+- **Tabs System**: Organized into **Details** (AI Summary), **Location** (Interactive Map), and **Calculator** (Mortgage Estimator).
+- **Features**: Dynamic specs (Beds, Baths, SqFt), verified owner info, and "exclusive listing" badges.
+
+### 🔖 Saved Properties (`/saved`)
+Your personal shortlist.
+- **Features**: Quick access to your favorite listings and a direct bridge to the Comparison Studio.
+
+### 📊 Comparison Studio (`/studio`)
+The platform's powerhouse for decision-making.
+- **Features**: A selection matrix for up to 3 properties, side-by-side technical comparison, and AI-driven market snapshot.
 
 ---
 
