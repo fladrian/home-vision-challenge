@@ -1,4 +1,4 @@
-import { Heart } from 'lucide-react';
+import { Bookmark } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useHousesStore } from '../stores/use-houses-store';
 import type { House } from '../types';
@@ -19,7 +19,7 @@ export const FavoriteButton = ({ house, className }: FavoriteButtonProps) => {
       size="icon"
       className={cn(
         'rounded-full bg-white/80 backdrop-blur-sm transition-all hover:scale-110 active:scale-95 dark:bg-zinc-900/80',
-        active && 'text-red-500 hover:text-red-600',
+        active && 'text-primary',
         className
       )}
       onClick={(e) => {
@@ -28,8 +28,8 @@ export const FavoriteButton = ({ house, className }: FavoriteButtonProps) => {
         toggleFavorite(house);
       }}
     >
-      <Heart className={cn('size-5', active && 'fill-current')} />
-      <span className="sr-only">{active ? 'Remove from favorites' : 'Add to favorites'}</span>
+      <Bookmark className={cn('size-5', active && 'fill-current')} />
+      <span className="sr-only">{active ? 'Remove from studio' : 'Add to studio'}</span>
     </Button>
   );
 };

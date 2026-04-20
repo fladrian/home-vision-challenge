@@ -1,7 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Header } from '@/components/layout/header';
 import { HousesPage } from '@/pages/houses-page';
-import { FavoritesPage } from '@/pages/favorites-page';
+import { SavedPage } from '@/pages/saved-page';
+import { ComparisonPage } from '@/pages/comparison-page';
 import { HouseDetailPage } from '@/pages/house-detail-page';
 
 function App() {
@@ -12,7 +13,9 @@ function App() {
       <main className="min-h-[calc(100vh-5rem)]">
         <Routes>
           <Route path="/" element={<HousesPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/saved" element={<SavedPage />} />
+          <Route path="/comparison" element={<ComparisonPage />} />
+          <Route path="/studio" element={<Navigate to="/comparison" replace />} />
           <Route path="/houses/:id" element={<HouseDetailPage />} />
           <Route path="*" element={
             <div className="flex h-[60vh] flex-col items-center justify-center gap-4 text-center">

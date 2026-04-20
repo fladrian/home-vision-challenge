@@ -10,7 +10,7 @@ import type { HousesQueryResponse } from '../types';
  * @returns Object containing house data and next page info
  */
 export const getHouses = async ({ pageParam = 1 }): Promise<HousesQueryResponse> => {
-  const PAGE_SIZE = 10;
+  const PAGE_SIZE = 20;
 
   // The API returns the response data due to interceptor config
   const response = await api.get('/houses', {

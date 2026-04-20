@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Heart, Search, Menu, X } from 'lucide-react';
+import { Home, BarChart2, Menu, X, Bookmark } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -12,8 +12,8 @@ export const Header = () => {
   const { favorites } = useHousesStore();
 
   const navItems = [
-    { name: 'Browse', path: '/', icon: Search },
-    { name: 'Favorites', path: '/favorites', icon: Heart, badge: favorites.length },
+    { name: 'Saved', path: '/saved', icon: Bookmark, badge: favorites.length },
+    { name: 'Comparison Studio', path: '/comparison', icon: BarChart2 },
   ];
 
   // Prevent scrolling when menu is open
@@ -61,10 +61,6 @@ export const Header = () => {
               </Button>
             </Link>
           ))}
-          <div className="ml-4 h-6 w-px bg-zinc-200 dark:bg-zinc-800" />
-          <Button className="ml-4 rounded-xl font-bold px-6 shadow-md shadow-primary/10">
-            Post a Listing
-          </Button>
         </nav>
 
         {/* Mobile Navigation Toggle */}
@@ -111,10 +107,6 @@ export const Header = () => {
                   </Button>
                 </Link>
               ))}
-              <div className="my-2 h-px bg-zinc-100 dark:bg-zinc-800" />
-              <Button className="w-full rounded-xl font-bold py-6 text-lg" onClick={() => setIsMenuOpen(false)}>
-                Post a Listing
-              </Button>
             </div>
           </motion.div>
         )}

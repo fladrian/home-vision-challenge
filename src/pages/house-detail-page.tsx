@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useHousesInfinite, FavoriteButton, HouseMap } from '@/features/houses';
+import { useHousesInfinite, FavoriteButton, HouseMap, AISummary, MortgageCalculator } from '@/features/houses';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -144,6 +144,10 @@ export const HouseDetailPage = () => {
 
           <Separator className="my-8" />
 
+          <div className="mb-8">
+            <AISummary house={house} extraData={extraData} />
+          </div>
+
           <div className="space-y-4">
             <h3 className="text-xl font-bold">Property Description</h3>
             <p className="leading-relaxed text-muted-foreground">
@@ -181,6 +185,10 @@ export const HouseDetailPage = () => {
               </div>
             </div>
             <HouseMap house={house} />
+          </div>
+
+          <div className="mt-8 pt-8 border-t">
+            <MortgageCalculator price={house.price} />
           </div>
 
           <div className="mt-10 flex gap-4">

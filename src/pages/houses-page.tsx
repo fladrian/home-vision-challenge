@@ -6,7 +6,6 @@ import {
   HouseCard,
   HouseRow,
   HouseListSkeleton,
-  HouseFilters,
   InfiniteScrollTrigger,
 } from '@/features/houses';
 import { Button } from '@/components/ui/button';
@@ -14,9 +13,6 @@ import { RefreshCcw, Home } from 'lucide-react';
 import { useWindowSize } from '@/hooks/use-window-size';
 
 export const HousesPage = () => {
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
-  
   const { viewMode } = useHousesStore();
   const { width } = useWindowSize();
   const {
@@ -34,15 +30,6 @@ export const HousesPage = () => {
     return data?.pages.flatMap((page) => page.houses) || [];
   }, [data]);
 
-  const filteredHouses = useMemo(() => {
-    return allHouses.filter((house) => {
-      const price = house.price;
-      const min = minPrice ? parseInt(minPrice) : 0;
-      const max = maxPrice ? parseInt(maxPrice) : Infinity;
-      return price >= min && price <= max;
-    });
-  }, [allHouses, minPrice, maxPrice]);
-
   // Calculate column count based on window width (Tailwind breakpoints)
   const columnCount = useMemo(() => {
     if (viewMode === 'list') return 1;
@@ -55,11 +42,11 @@ export const HousesPage = () => {
   // Group houses into rows for virtualization
   const virtualRows = useMemo(() => {
     const rows = [];
-    for (let i = 0; i < filteredHouses.length; i += columnCount) {
-      rows.push(filteredHouses.slice(i, i + columnCount));
+    for (let i = 0; i < allHouses.length; i += columnCount) {
+      rows.push(allHouses.slice(i, i + columnCount));
     }
     return rows;
-  }, [filteredHouses, columnCount]);
+  }, [allHouses, columnCount]);
 
   const parentRef = useRef<HTMLDivElement>(null);
   const [scrollOffset, setScrollOffset] = useState(0);
@@ -113,20 +100,11 @@ export const HousesPage = () => {
         </p>
       </div>
 
-      <HouseFilters
-        minPrice={minPrice}
-        maxPrice={maxPrice}
-        onMinPriceChange={setMinPrice}
-        onMaxPriceChange={setMaxPrice}
-        onClear={() => {
-          setMinPrice('');
-          setMaxPrice('');
-        }}
-      />
+
 
       {isLoading ? (
         <HouseListSkeleton viewMode={viewMode} />
-      ) : filteredHouses.length === 0 ? (
+      ) : allHouses.length === 0 ? (
         <div className="flex min-h-[40vh] flex-col items-center justify-center gap-4 text-center">
            <div className="rounded-full bg-zinc-100 p-6 dark:bg-zinc-800">
             <Home className="size-12 text-muted-foreground" />
