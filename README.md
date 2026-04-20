@@ -16,7 +16,7 @@ pnpm install
 
 # 2. Set up environment variables
 # Create a .env file and add the following variables:
-VITE_API_URL=https://staging.homevision.co/api_project
+VITE_API_URL=base_url_api
 VITE_GEMINI_API_KEY=your_gemini_api_key_here
 
 # 3. Start development server
