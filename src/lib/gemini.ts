@@ -27,7 +27,7 @@ export const generatePropertySummary = async (houseStr: string, extraDataStr: st
     return result.response.text().trim();
   } catch (e) {
     console.error("Error calling Gemini API:", e);
-    throw new Error("Unable to generate summary at this time.");
+    return "AI Summary is temporarily unavailable. Please try again later.";
   }
 };
 
@@ -51,6 +51,6 @@ export const generateComparisonVerdict = async (propertiesStr: string): Promise<
     return result.response.text().trim();
   } catch (e) {
     console.error("Error calling Gemini API:", e);
-    throw new Error("Unable to generate verdict at this time.");
+    return "AI Verdict is temporarily unavailable. Please try again later.";
   }
 };

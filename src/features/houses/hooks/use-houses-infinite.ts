@@ -10,7 +10,11 @@ export const useHousesInfinite = () => {
     queryKey: ['houses', 'list'],
     queryFn: ({ pageParam }) => getHouses({ pageParam }),
     initialPageParam: 1,
-    getNextPageParam: (lastPage) => lastPage.nextPage,
+    getNextPageParam: (lastPage) => {
+      // Stop pagination when the API returns an empty list to prevent unnecessary fetches
+      if (!lastPage.houses.length) return undefined;
+      return lastPage.nextPage;
+    },
     // Keep data fresh for 5 minutes, but allow background refetching
     staleTime: 1000 * 60 * 5,
     // Limit retries to prevent performance degradation on consistent API failures

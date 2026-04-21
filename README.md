@@ -62,7 +62,7 @@ pnpm dev
 - **Zustand Persistence**: Saved properties are preserved across browser sessions using local storage middleware.
 
 ### 6. Premium UI/UX
-- **Prop-Tech Aesthetics**: A modern, "airy" and spacious design language built with Tailwind CSS 4 and Shadcn/UI.
+- **Property-Tech Design Language**: A modern, spacious interface with clean typography, generous whitespace, and a professional color palette — built with Tailwind CSS 4 and Shadcn/UI.
 - **Responsive Navigation**: Optimized for mobile and desktop, featuring scrollable tab navigation and stacked layouts for small screens.
 - **Dark Mode & Motion**: System-aware dark mode and smooth transitions powered by Framer Motion.
 

@@ -3,19 +3,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Sparkles, AlertTriangle } from 'lucide-react';
 import { TypewriterText } from '@/components/ui/typewriter-text';
 import { Button } from '@/components/ui/button';
-import type { House } from '../types';
+import type { House, PropertyDetails } from '../types';
 import { generatePropertySummary } from '@/lib/gemini';
 
-
 interface AISummaryProps {
+  /** The house listing to generate an AI summary for */
   house: House;
-  extraData: {
-    sqft: number;
-    beds: number;
-    baths: number;
-    garage: number;
-    yearBuilt: number;
-  };
+  /** Extended property details (beds, baths, sqft, etc.) used as context for the AI prompt */
+  extraData: PropertyDetails;
 }
 
 export const AISummary = ({ house, extraData }: AISummaryProps) => {
