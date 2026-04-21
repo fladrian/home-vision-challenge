@@ -3,8 +3,11 @@ import { useInView } from 'react-intersection-observer';
 import { Loader2 } from 'lucide-react';
 
 interface InfiniteScrollTriggerProps {
+  /** Callback triggered when the component intersects the viewport */
   onIntersect: () => void;
+  /** Indicates if there are more pages available to fetch */
   hasNextPage: boolean;
+  /** Indicates if a fetch request is currently in progress */
   isFetchingNextPage: boolean;
 }
 

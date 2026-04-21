@@ -13,5 +13,7 @@ export const useHousesInfinite = () => {
     getNextPageParam: (lastPage) => lastPage.nextPage,
     // Keep data fresh for 5 minutes, but allow background refetching
     staleTime: 1000 * 60 * 5,
+    // Limit retries to prevent performance degradation on consistent API failures
+    retry: 2,
   });
 };

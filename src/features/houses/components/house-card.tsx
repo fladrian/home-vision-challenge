@@ -7,6 +7,7 @@ import { FavoriteButton } from './favorite-button';
 import { Link } from 'react-router-dom';
 
 interface HouseCardProps {
+  /** The house data object containing all property details to be displayed */
   house: House;
 }
 

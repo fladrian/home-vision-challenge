@@ -1,8 +1,9 @@
 # PropsVision | Precision Property Intelligence
 
-A premium real estate underwriting and collateral evaluation platform built for modern high-performance property analysis.
+A premium real estate underwriting and collateral evaluation platform built for modern high-performance property analysis. PropsVision addresses the critical pain points of real estate underwriters and investors—specifically the slow, fragmented process of comparing properties and extracting actionable insights from raw data. By combining infinite scrolling for rapid discovery, a dedicated Comparison Studio for side-by-side analysis, and AI-driven market intelligence to summarize technical details, the platform dramatically reduces time-to-decision and provides immediate, data-backed financial clarity.
 
 ## 🔗 Quick Links
+- **Live Demo**: [https://propsvision.netlify.app/](https://propsvision.netlify.app/)
 - **GitHub Repository**: [fladrian/home-vision-challenge](https://github.com/fladrian/home-vision-challenge)
 - **LinkedIn**: [linkedin.com/in/fladrian](https://linkedin.com/in/fladrian)
 
@@ -16,8 +17,8 @@ pnpm install
 
 # 2. Set up environment variables
 # Create a .env file and add the following variables:
-VITE_API_URL=base_url_api
-VITE_GEMINI_API_KEY=your_gemini_api_key_here
+VITE_API_URL=<YOUR_BASE_URL>
+VITE_GEMINI_API_KEY=<YOUR_GEMINI_API_KEY>
 
 # 3. Start development server
 pnpm dev
