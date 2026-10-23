@@ -49,7 +49,7 @@ export const MortgageCalculator = ({ price }: MortgageCalculatorProps) => {
   };
 
   return (
-    <Card className="rounded-3xl border shadow-sm dark:bg-zinc-900/50">
+    <Card className="rounded-3xl border shadow-sm">
       <CardContent className="p-6 space-y-6">
         {/* Sliders / Inputs */}
         <div className="space-y-5">
@@ -97,7 +97,7 @@ export const MortgageCalculator = ({ price }: MortgageCalculatorProps) => {
         <Separator />
 
         {/* Results */}
-        <div className="rounded-2xl bg-zinc-100 p-5 dark:bg-zinc-800">
+        <div className="rounded-2xl bg-secondary p-5">
           <div className="flex items-baseline justify-between mb-2">
             <span className="text-sm font-bold text-muted-foreground">Estimated Payment</span>
             <div className="flex items-baseline gap-1">
@@ -108,7 +108,7 @@ export const MortgageCalculator = ({ price }: MortgageCalculatorProps) => {
           
           <div className="flex items-center gap-2 mt-4 text-xs font-medium text-muted-foreground">
              <div className="h-2 w-1/2 bg-primary rounded-l-full" title="Principal" />
-             <div className="h-2 w-1/2 bg-zinc-300 dark:bg-zinc-600 rounded-r-full" title="Interest" />
+             <div className="h-2 w-1/2 bg-accent rounded-r-full" title="Interest" />
           </div>
           <div className="flex flex-col sm:flex-row justify-between mt-2 text-xs font-bold text-muted-foreground gap-1 sm:gap-0">
              <span>Principal: {formatCurrency(principal)}</span>

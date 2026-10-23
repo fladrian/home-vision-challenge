@@ -1,4 +1,4 @@
-# PropsVision | Precision Property Intelligence
+# PropsIA | Precision Property Intelligence
 
 A premium real estate underwriting and collateral evaluation platform built for modern high-performance property analysis. PropsVision addresses the critical pain points of real estate underwriters and investors—specifically the slow, fragmented process of comparing properties and extracting actionable insights from raw data. By combining infinite scrolling for rapid discovery, a dedicated Comparison Studio for side-by-side analysis, and AI-driven market intelligence to summarize technical details, the platform dramatically reduces time-to-decision and provides immediate, data-backed financial clarity.
 

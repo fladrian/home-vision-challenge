@@ -34,8 +34,8 @@ export const SavedPage = () => {
 
       {favorites.length === 0 ? (
         <div className="flex min-h-[50vh] flex-col items-center justify-center gap-4 text-center">
-          <div className="rounded-full bg-primary/10 p-6">
-            <Bookmark className="size-12 text-primary" />
+          <div className="rounded-full bg-accent/10 p-6">
+            <Bookmark className="size-12 text-accent" />
           </div>
           <h2 className="text-2xl font-bold">No saved properties yet</h2>
           <p className="max-w-xs text-muted-foreground">

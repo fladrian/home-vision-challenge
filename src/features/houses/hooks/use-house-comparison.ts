@@ -53,7 +53,7 @@ export const useHouseComparison = () => {
     }
     
     if (housesToCompare.length === 1) {
-      setAiVerdict(`PropsVision Verdict: You have selected a great property in ${housesToCompare[0].address.split(',')[1] || "its area"}. Add more to compare!`);
+      setAiVerdict(`PropsIA Verdict: You have selected a great property in ${housesToCompare[0].address.split(',')[1] || "its area"}. Add more to compare!`);
       return;
     }
 

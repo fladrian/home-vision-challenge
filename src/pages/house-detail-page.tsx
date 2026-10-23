@@ -80,7 +80,7 @@ export const HouseDetailPage = () => {
           <motion.div 
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="group relative aspect-4/3 overflow-hidden rounded-3xl bg-zinc-100 shadow-xl dark:bg-zinc-800"
+            className="group relative aspect-4/3 overflow-hidden rounded-3xl bg-muted shadow-xl"
           >
             <img
               src={house.photoURL}
@@ -99,7 +99,7 @@ export const HouseDetailPage = () => {
 
           <div className="grid grid-cols-4 gap-4">
              {[...Array(4)].map((_, i) => (
-                <div key={i} className="aspect-square overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 opacity-60 hover:opacity-100 cursor-pointer transition-all">
+                <div key={i} className="aspect-square overflow-hidden rounded-xl bg-muted border border-border opacity-60 hover:opacity-100 cursor-pointer transition-all">
                    <img src={house.photoURL} className="h-full w-full object-cover filter blur-[2px] hover:blur-0" />
                 </div>
              ))}
@@ -162,7 +162,7 @@ export const HouseDetailPage = () => {
 
               <div className="grid grid-cols-2 gap-4 border-y py-6">
                 <div className="flex items-center gap-3">
-                  <div className="flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <div className="flex size-9 items-center justify-center rounded-full bg-accent/10 text-accent">
                     <Calendar className="size-4" />
                   </div>
                   <div>
@@ -171,7 +171,7 @@ export const HouseDetailPage = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <div className="flex size-9 items-center justify-center rounded-full bg-accent/10 text-accent">
                     <ShieldCheck className="size-4" />
                   </div>
                   <div>
@@ -186,7 +186,7 @@ export const HouseDetailPage = () => {
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-bold">Location</h3>
                 <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                  <MapPin className="size-4 text-primary" />
+                  <MapPin className="size-4 text-accent" />
                   <span>{house.address}</span>
                 </div>
               </div>

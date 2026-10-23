@@ -5,7 +5,7 @@ import { Footer } from './footer';
 
 export const AppLayout = ({ children }: PropsWithChildren) => {
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 font-sans antialiased text-zinc-900 dark:text-zinc-50">
+    <div className="min-h-screen bg-background text-foreground font-sans antialiased">
       <Header />
 
       <main className="min-h-[calc(100vh-5rem)] pt-8">

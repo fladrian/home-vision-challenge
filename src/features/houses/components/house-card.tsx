@@ -28,7 +28,7 @@ export const HouseCard = ({ house }: HouseCardProps) => {
       className="group h-full"
     >
       <Link to={`/houses/${house.id}`}>
-        <Card className="h-full flex flex-col gap-0 overflow-hidden border-none bg-white p-0 shadow-sm transition-shadow hover:shadow-xl dark:bg-zinc-900">
+        <Card className="h-full flex flex-col gap-0 overflow-hidden border-none bg-card p-0 shadow-sm transition-shadow hover:shadow-xl">
           <div className="relative aspect-4/3 overflow-hidden">
             <img
               src={house.photoURL}
@@ -43,7 +43,7 @@ export const HouseCard = ({ house }: HouseCardProps) => {
             </div>
             
             <div className="absolute bottom-3 left-3">
-              <Badge variant="secondary" className="bg-white/90 font-bold backdrop-blur dark:bg-zinc-900/90">
+              <Badge variant="secondary" className="bg-background/90 font-bold backdrop-blur">
                 <Tag className="mr-1 size-3" />
                 Featured
               </Badge>
@@ -52,7 +52,7 @@ export const HouseCard = ({ house }: HouseCardProps) => {
 
           <CardContent className="p-4">
             <div className="mb-2 flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-              <MapPin className="size-3.5 text-primary" />
+              <MapPin className="size-3.5 text-accent" />
               <span className="line-clamp-1">{house.address.split(',').slice(-2).join(',')}</span>
             </div>
             <h3 className="mb-1 line-clamp-1 text-base sm:text-lg font-bold tracking-tight">

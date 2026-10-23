@@ -20,7 +20,7 @@ export const FavoriteButton = ({ house, className }: FavoriteButtonProps) => {
       variant="secondary"
       size="icon"
       className={cn(
-        'rounded-full bg-white/80 backdrop-blur-sm transition-all hover:scale-110 active:scale-95 dark:bg-zinc-900/80',
+        'rounded-full bg-background/80 backdrop-blur-sm transition-all hover:scale-110 active:scale-95',
         active && 'text-primary',
         className
       )}
