@@ -39,7 +39,7 @@ export const HouseMap = ({ house, className }: HouseMapProps) => {
 
   return (
     <div className={cn(
-      "relative h-[280px] w-full overflow-hidden rounded-2xl border bg-zinc-100 shadow-sm dark:bg-zinc-800",
+      "relative h-[280px] w-full overflow-hidden rounded-2xl border bg-muted shadow-sm",
       className
     )}>
       <MapContainer

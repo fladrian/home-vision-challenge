@@ -3,12 +3,12 @@ import { LinkedInIcon, GithubIcon } from '@/components/ui/icons';
 export const Footer = () => {
   const author = "fladrian"
   return (
-    <footer className="border-t bg-white py-10 dark:bg-zinc-950">
+    <footer className="border-t bg-background py-10">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
           <div>
-            <span className="text-xl font-black tracking-tighter">
-              Props<span className="text-primary italic">Vision</span>
+            <span className="text-xl font-extrabold tracking-tight text-foreground">
+              Props<span className="font-semibold text-primary">IA</span>
             </span>
             <p className="mt-1 text-sm text-muted-foreground max-w-xs">
               Smart property evaluation and collateral intelligence.

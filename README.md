@@ -1,4 +1,4 @@
-# PropsVision | Precision Property Intelligence
+# PropsIA | Precision Property Intelligence
 
 A premium real estate underwriting and collateral evaluation platform built for modern high-performance property analysis.
 

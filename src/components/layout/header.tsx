@@ -1,11 +1,10 @@
 import { useState, useLayoutEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BarChart2, Menu, X, Bookmark } from 'lucide-react';
+import { BarChart2, Menu, X, Bookmark, Building2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useHousesStore } from '@/features/houses';
-import homevisionLogo from '@/assets/branding/homevision_logo.svg';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,18 +29,15 @@ export const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md dark:bg-zinc-950/80">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
-        <Link to="/" className="flex items-center gap-2 transition-transform hover:scale-105">
-          <div className="flex flex-col">
-            <span className="text-2xl font-black tracking-tighter text-zinc-900 dark:text-white leading-none">
-              Props<span className="text-primary italic">Vision</span>
-            </span>
-            <div className="flex items-center gap-1 mt-1">
-              <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider">by</span>
-              <img src={homevisionLogo} alt="HomeVision Logo" className="h-3" />
-            </div>
+        <Link to="/" className="flex items-center gap-2.5 transition-transform hover:scale-[1.02]">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-accent-foreground shadow-md">
+            <Building2 className="size-5" />
           </div>
+          <span className="text-2xl font-extrabold tracking-tight text-foreground">
+            Props<span className="font-semibold text-primary">IA</span>
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -52,13 +48,13 @@ export const Header = () => {
                 variant={location.pathname === item.path ? 'secondary' : 'ghost'}
                 className={cn(
                   'relative px-4 font-bold transition-all',
-                  location.pathname === item.path ? 'text-primary' : 'text-zinc-500'
+                  location.pathname === item.path ? 'text-primary' : 'text-muted-foreground'
                 )}
               >
                 <item.icon className="mr-2 size-4" />
                 {item.name}
                 {item.badge !== undefined && item.badge > 0 && (
-                  <span className="ml-2 flex size-5 items-center justify-center rounded-full bg-primary text-[10px] text-white">
+                  <span className="ml-2 flex size-5 items-center justify-center rounded-full bg-primary text-[10px] text-primary-foreground">
                     {item.badge}
                   </span>
                 )}
@@ -85,7 +81,7 @@ export const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-b bg-white dark:bg-zinc-950 md:hidden overflow-hidden"
+            className="border-b bg-background md:hidden overflow-hidden"
           >
             <div className="container mx-auto px-4 py-8 flex flex-col gap-4">
               {navItems.map((item) => (
@@ -98,13 +94,13 @@ export const Header = () => {
                     variant={location.pathname === item.path ? 'secondary' : 'ghost'}
                     className={cn(
                       'w-full justify-start text-lg font-bold py-6',
-                      location.pathname === item.path ? 'text-primary' : 'text-zinc-500'
+                      location.pathname === item.path ? 'text-primary' : 'text-muted-foreground'
                     )}
                   >
                     <item.icon className="mr-4 size-6" />
                     {item.name}
                     {item.badge !== undefined && item.badge > 0 && (
-                      <span className="ml-auto flex size-6 items-center justify-center rounded-full bg-primary text-xs text-white">
+                      <span className="ml-auto flex size-6 items-center justify-center rounded-full bg-primary text-xs text-primary-foreground">
                         {item.badge}
                       </span>
                     )}

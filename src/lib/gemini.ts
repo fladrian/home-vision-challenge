@@ -11,7 +11,7 @@ export const generatePropertySummary = async (houseStr: string, extraDataStr: st
   if (!API_KEY) throw new Error("Gemini API Key missing.");
 
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
-  const prompt = `You are "PropsVision AI", an expert PropTech assistant.
+  const prompt = `You are "PropsIA", an expert PropTech assistant.
   Write a 3-sentence dynamic, persuasive summary of the following property data:
   House: ${houseStr}
   Details: ${extraDataStr}
@@ -32,8 +32,8 @@ export const generateComparisonVerdict = async (propertiesStr: string): Promise<
   if (!API_KEY) throw new Error("Gemini API Key missing.");
 
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
-  const prompt = `You are "PropsVision AI", an expert PropTech data analyst.
-  Compare the following real estate properties and provide a "PropsVision Verdict".
+  const prompt = `You are "PropsIA", an expert PropTech data analyst.
+  Compare the following real estate properties and provide a "PropsIA Verdict".
   Properties: ${propertiesStr}
 
   Provide a short, punchy 2-3 sentence verdict on which property offers the best value. 

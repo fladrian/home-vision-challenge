@@ -1,6 +1,6 @@
 # Technical Specification
 
-This document details the technologies, libraries, and architectural decisions behind **PropsVision**.
+This document details the technologies, libraries, and architectural decisions behind **PropsIA**.
 
 ## 🛠 Tech Stack
 

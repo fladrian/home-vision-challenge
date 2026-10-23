@@ -26,7 +26,7 @@ export const HouseRow = ({ house }: HouseRowProps) => {
       className="group"
     >
       <Link to={`/houses/${house.id}`}>
-        <Card className="flex flex-col gap-4 overflow-hidden border-none bg-white p-3 shadow-sm transition-shadow hover:shadow-md sm:flex-row sm:items-center dark:bg-zinc-900">
+        <Card className="flex flex-col gap-4 overflow-hidden border-none bg-card p-3 shadow-sm transition-shadow hover:shadow-md sm:flex-row sm:items-center">
           <div className="relative aspect-video w-full shrink-0 overflow-hidden rounded-lg sm:w-48 sm:aspect-square">
             <img
               src={house.photoURL}
@@ -42,7 +42,7 @@ export const HouseRow = ({ house }: HouseRowProps) => {
           <div className="flex flex-1 flex-col justify-center gap-1 overflow-hidden px-2">
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1 text-xs text-muted-foreground font-medium">
-                <MapPin className="size-3 text-primary" />
+                <MapPin className="size-3 text-accent" />
                 <span className="line-clamp-1">{house.address.split(',').slice(-1)}</span>
               </div>
             </div>
@@ -53,8 +53,8 @@ export const HouseRow = ({ house }: HouseRowProps) => {
             
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mt-1">
               <div className="flex items-center gap-1.5 font-medium">
-                <Tag className="size-3.5 text-primary" />
-                <span className="text-primary font-bold">{formattedPrice}</span>
+                <Tag className="size-3.5 text-accent" />
+                <span className="text-accent font-bold">{formattedPrice}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <User className="size-3.5" />

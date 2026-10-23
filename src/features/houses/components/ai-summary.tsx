@@ -43,9 +43,9 @@ export const AISummary = ({ house, extraData }: AISummaryProps) => {
   };
 
   return (
-    <Card className="rounded-3xl border shadow-sm border-indigo-500/20 bg-linear-to-br from-indigo-50/50 to-white dark:from-indigo-950/20 dark:to-zinc-900/50">
+    <Card className="rounded-3xl border shadow-sm border-accent/25 bg-linear-to-br from-accent/10 to-background dark:from-accent/15 dark:to-background/40">
       <CardHeader className="pb-2">
-        <CardTitle className="flex items-center gap-2 text-sm font-bold text-indigo-600 dark:text-indigo-400">
+        <CardTitle className="flex items-center gap-2 text-sm font-bold text-accent">
           <Sparkles className="size-4" />
           AI-Enhanced Property Summary
         </CardTitle>
@@ -59,8 +59,7 @@ export const AISummary = ({ house, extraData }: AISummaryProps) => {
             <Button 
                 onClick={fetchSummary} 
                 size="sm" 
-                variant="outline" 
-                className="mt-2 text-indigo-600 dark:text-indigo-400 border-indigo-200 hover:bg-indigo-50 dark:border-indigo-800 dark:hover:bg-indigo-900/50 rounded-xl font-bold"
+                className="mt-2 rounded-xl font-bold"
             >
               <Sparkles className="mr-2 size-3" /> Generate AI Analysis
             </Button>
@@ -82,7 +81,7 @@ export const AISummary = ({ house, extraData }: AISummaryProps) => {
             )}
             
             {!isGenerating && fullText && (
-               <span className="ml-1 inline-block w-1.5 h-4 bg-indigo-500 animate-pulse align-middle" />
+               <span className="ml-1 inline-block w-1.5 h-4 bg-primary animate-pulse align-middle" />
             )}
           </div>
         )}

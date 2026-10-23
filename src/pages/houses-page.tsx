@@ -81,7 +81,7 @@ export const HousesPage = () => {
     <PageLayout>
       <div className="mb-10 max-w-4xl">
         <h1 className="text-4xl font-black tracking-tight sm:text-5xl leading-[1.1]">
-          Precision <span className="text-primary italic">property intelligence</span>.
+          Precision <span className="text-accent italic">property intelligence</span>.
         </h1>
         <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
           Compare, evaluate, and assess properties with data-driven accuracy. 
@@ -95,7 +95,7 @@ export const HousesPage = () => {
         <HouseListSkeleton viewMode={viewMode} />
       ) : allHouses.length === 0 ? (
         <div className="flex min-h-[40vh] flex-col items-center justify-center gap-4 text-center">
-          <div className="rounded-full bg-zinc-100 p-6 dark:bg-zinc-800">
+          <div className="rounded-full bg-secondary p-6">
             <Home className="size-12 text-muted-foreground" />
           </div>
           <h3 className="text-xl font-bold">No properties found</h3>
