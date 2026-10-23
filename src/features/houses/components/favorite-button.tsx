@@ -5,7 +5,9 @@ import type { House } from '../types';
 import { cn } from '@/lib/utils';
 
 interface FavoriteButtonProps {
+  /** The house object to add or remove from favorites */
   house: House;
+  /** Optional custom Tailwind classes to style the button */
   className?: string;
 }
 

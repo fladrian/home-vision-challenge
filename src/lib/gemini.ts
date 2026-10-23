@@ -8,7 +8,10 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 const MODEL_NAME = 'gemini-3-flash-preview';
 
 export const generatePropertySummary = async (houseStr: string, extraDataStr: string): Promise<string> => {
-  if (!API_KEY) throw new Error("Gemini API Key missing.");
+  if (!API_KEY) {
+    console.warn("Gemini API Key missing. Falling back to default summary.");
+    return "AI Summary is currently unavailable due to missing API configuration. Please provide a valid Gemini API Key.";
+  }
 
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
   const prompt = `You are "PropsIA", an expert PropTech assistant.
@@ -24,12 +27,15 @@ export const generatePropertySummary = async (houseStr: string, extraDataStr: st
     return result.response.text().trim();
   } catch (e) {
     console.error("Error calling Gemini API:", e);
-    throw new Error("Unable to generate summary at this time.");
+    return "AI Summary is temporarily unavailable. Please try again later.";
   }
 };
 
 export const generateComparisonVerdict = async (propertiesStr: string): Promise<string> => {
-  if (!API_KEY) throw new Error("Gemini API Key missing.");
+  if (!API_KEY) {
+    console.warn("Gemini API Key missing. Falling back to default verdict.");
+    return "AI Verdict is currently unavailable due to missing API configuration. Please compare properties manually.";
+  }
 
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
   const prompt = `You are "PropsIA", an expert PropTech data analyst.
@@ -45,6 +51,6 @@ export const generateComparisonVerdict = async (propertiesStr: string): Promise<
     return result.response.text().trim();
   } catch (e) {
     console.error("Error calling Gemini API:", e);
-    throw new Error("Unable to generate verdict at this time.");
+    return "AI Verdict is temporarily unavailable. Please try again later.";
   }
 };

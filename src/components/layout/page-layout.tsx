@@ -13,7 +13,7 @@ interface PageLayoutProps {
  */
 export const PageLayout = ({ children, className }: PropsWithChildren<PageLayoutProps>) => {
   return (
-    <div className={cn("container mx-auto px-4 pb-8", className)}>
+    <div className={cn("container mx-auto px-6 pb-12", className)}>
       {children}
     </div>
   );

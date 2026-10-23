@@ -3,20 +3,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Sparkles, AlertTriangle } from 'lucide-react';
 import { TypewriterText } from '@/components/ui/typewriter-text';
 import { Button } from '@/components/ui/button';
-import type { House } from '../types';
+import type { House, PropertyDetails } from '../types';
 import { generatePropertySummary } from '@/lib/gemini';
 
-import { Skeleton } from '@/components/ui/skeleton';
-
 interface AISummaryProps {
+  /** The house listing to generate an AI summary for */
   house: House;
-  extraData: {
-    sqft: number;
-    beds: number;
-    baths: number;
-    garage: number;
-    yearBuilt: number;
-  };
+  /** Extended property details (beds, baths, sqft, etc.) used as context for the AI prompt */
+  extraData: PropertyDetails;
 }
 
 export const AISummary = ({ house, extraData }: AISummaryProps) => {
@@ -67,15 +61,11 @@ export const AISummary = ({ house, extraData }: AISummaryProps) => {
         ) : (
           <div className="text-sm leading-relaxed text-muted-foreground relative min-h-[80px]">
             {errorMsg ? (
-               <span className="flex items-center gap-2 text-amber-600">
+               <span className="flex items-center gap-2 text-amber-600 py-1">
                  <AlertTriangle className="size-4"/> {errorMsg}
                </span>
             ) : isGenerating ? (
-              <div className="space-y-2">
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-5/6" />
-                <Skeleton className="h-4 w-4/6" />
-              </div>
+              <TypewriterText text="Analyzing property features and market potential..." speed={15} className="animate-pulse" />
             ) : (
               <TypewriterText text={fullText} speed={15} />
             )}
